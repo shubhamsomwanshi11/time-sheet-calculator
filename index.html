@@ -6,238 +6,110 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Sheet Calculator</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./index.js"></script>
+    <script src="./indexb.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+    <style>
+        .table{
+            width: 90vw;
+            height: 90vh;
+            background-color: red;
+        }
+    </style>
 </head>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+
 <body>
-    <div class="table">
-        <h1 class="title">Time Sheet Calculator</h1>
+    <div class="is-fullhd">
+        <div class="is-flex is-justify-content-center is-align-content-center">
+            <div>
+                <table class="table card">
+                    <caption class="title is-2 has-text-centered">Timesheet Calculator</caption>
+                    <center>
+                        <thead>
+                            <tr class="has-background-primary-light pt-5 pb-5">
+                                <th>Day</th>
+                                <th>Starting Time</th>
+                                <th>Ending Time</th>
+                                <th>Break Time (minutes)</th>
+                                <th>Total Hours Worked</th>
+                            </tr>
+                        </thead>
+                        <tbody class="has-text-centered">
+                            <tr>
+                                <td>Monday</td>
+                                <td><input type="time" class="input" id="monday-start"></td>
+                                <td><input type="time" class="input" id="monday-end"></td>
+                                <td><input type="number" class="input" id="monday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="monday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td><input type="time" class="input" id="tuesday-start"></td>
+                                <td><input type="time" class="input" id="tuesday-end"></td>
+                                <td><input type="number" class="input" id="tuesday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="tuesday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td><input type="time" class="input" id="wednesday-start"></td>
+                                <td><input type="time" class="input" id="wednesday-end"></td>
+                                <td><input type="number" class="input" id="wednesday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="wednesday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td><input type="time" class="input" id="thursday-start"></td>
+                                <td><input type="time" class="input" id="thursday-end"></td>
+                                <td><input type="number" class="input" id="thursday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="thursday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td><input type="time" class="input" id="friday-start"></td>
+                                <td><input type="time" class="input" id="friday-end"></td>
+                                <td><input type="number" class="input" id="friday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="friday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td><input type="time" class="input" id="saturday-start"></td>
+                                <td><input type="time" class="input" id="saturday-end"></td>
+                                <td><input type="number" class="input" id="saturday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="saturday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td><input type="time" class="input" id="sunday-start"></td>
+                                <td><input type="time" class="input" id="sunday-end"></td>
+                                <td><input type="number" class="input" id="sunday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="sunday-total"></span></td>
+                            </tr>
+                        </tbody>
 
-        <form action="" onsubmit="return false">
-            <table>
-                <tr class="header">
-                    <th>Day</th>
-                    <th>Starting Time</th>
-                    <th>Ending Time</th>
-                    <th>Break Deduction</th>
-                    <th>Total</th>
-                </tr>
-
-                <tr>
-                    <td id="day">Monday</td>
-                    <td class="starting-time">
-                        <input type="number" value="00" min="00" max="12" id="0-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="0-starting-minutes" class="time">
-                        <select name="" id="0-starting-time-period" class="time-period">
-                            <option value="1" id="0-starting-am">AM</option>
-                            <option value="2" id="0-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="ending-time">
-                        <input type="number" value="00" min="00" max="12" id="0-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="0-ending-minutes" class="time">
-                        <select name="" id="0-ending-time-period" class="time-period">
-                            <option value="2" id="0-ending-pm">PM</option>
-                            <option value="1" id="0-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00" min="00" max="12" id="0-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="0-break-minutes" class="time">
-                    </td>
-                    <td><span id="0-total" class="total">00:00</span></td>
-                </tr>
-                <tr class="th">
-                    <td id="day">Tuesday</td>
-                    <td class="1-starting-time">
-                        <input type="number" value="00" min="00" max="12" id="1-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="1-starting-minutes" class="time">
-                        <select name="" id="1-starting-time-period" class="time-period">
-                            <option value="1" id="1-starting-am">AM</option>
-                            <option value="2" id="1-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="2-ending-time">
-                        <input type="number" value="00" min="00" max="12" id="1-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="1-ending-minutes" class="time">
-                        <select name="" id="1-ending-time-period" class="time-period">
-                            <option value="2" id="1-ending-pm">PM</option>
-                            <option value="1" id="1-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00" min="00" max="12" id="1-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="1-break-minutes" class="time">
-                    </td>
-                    <td><span id="1-total" class="total">00:00</span></td>
-                </tr>
-                <tr>
-                    <td id="day">Wednesday</td>
-                    <td class="starting-time">
-                        <input type="number" value="00" min="00" max="12" id="2-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="2-starting-minutes" class="time">
-                        <select name="" id="2-starting-time-period" class="time-period">
-                            <option value="1" id="2-starting-am">AM</option>
-                            <option value="2" id="2-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="ending-time">
-                        <input type="number" value="00" min="00" max="12" id="2-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="2-ending-minutes" class="time">
-                        <select name="" id="2-ending-time-period" class="time-period">
-                            <option value="2" id="2-ending-pm">PM</option>
-                            <option value="1" id="2-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00" min="00" max="12" id="2-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="2-break-minutes" class="time">
-                    </td>
-                    <td><span id="2-total" class="total">00:00</span></td>
-                </tr>
-                <tr class="th">
-                    <td id="day">Thursday</td>
-                    <td class="starting-time">
-                        <input type="number" value="00" min="00" max="12" id="3-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="3-starting-minutes" class="time">
-                        <select name="" id="3-starting-time-period" class="time-period">
-                            <option value="1" id="3-starting-am">AM</option>
-                            <option value="2" id="3-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="ending-time">
-                        <input type="number" value="00" min="00" max="12" id="3-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="3-ending-minutes" class="time">
-                        <select name="" id="3-ending-time-period" class="time-period">
-                            <option value="2" id="3-ending-pm">PM</option>
-                            <option value="1" id="3-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00" min="00" max="12" id="3-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="3-break-minutes" class="time">
-                    </td>
-                    <td><span id="3-total" class="total">00:00</span></td>
-                </tr>
-                <tr>
-                    <td id="day">Friday</td>
-                    <td class="4-starting-time">
-                        <input type="number" value="00" min="00" max="12" id="4-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="4-starting-minutes" class="time">
-                        <select name="" id="4-starting-time-period" class="time-period">
-                            <option value="1" id="4-starting-am">AM</option>
-                            <option value="2" id="4-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="4-ending-time">
-                        <input type="number" value="00" min="00" max="12" id="4-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="4-ending-minutes" class="time">
-                        <select name="" id="4-ending-time-period" class="time-period">
-                            <option value="2" id="4-ending-pm">PM</option>
-                            <option value="1" id="4-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00"  min="00" max="12" id="4-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00"  min="00" max="59" id="4-break-minutes" class="time">
-                    </td>
-                    <td><span id="4-total" class="total">00:00</span></td>
-                </tr>
-                <tr class="th">
-                    <td id="day">Saturday</td>
-                    <td class="5-starting-time">
-                        <input type="number" value="00" min="00" max="12" id="5-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="5-starting-minutes" class="time">
-                        <select name="" id="5-starting-time-period" class="time-period">
-                            <option value="1" id="5-starting-am">AM</option>
-                            <option value="2" id="5-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="5-ending-time">
-                        <input type="number" value="00" min="00" max="12" id="5-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="5-ending-minutes" class="time">
-                        <select name="" id="5-ending-time-period" class="time-period">
-                            <option value="2" id="5-ending-pm">PM</option>
-                            <option value="1" id="5-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00" min="00" max="12" id="5-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="5-break-minutes" class="time">
-                    </td>
-                    <td><span id="5-total" class="total">00:00</span></td>
-                </tr>
-                <tr>
-                    <td id="day">Sunday</td>
-                    <td class="starting-time">
-                        <input type="number" value="00" min="00" max="12" id="6-starting-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="6-starting-minutes" class="time">
-                        <select name="" id="6-starting-time-period" class="time-period">
-                            <option value="1" id="6-starting-am">AM</option>
-                            <option value="2" id="6-starting-pm">PM</option>
-                        </select>
-                    </td>
-                    <td class="ending-time">
-                        <input type="number" value="00" min="00" max="12" id="6-ending-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="6-ending-minutes" class="time">
-                        <select name="" id="6-ending-time-period" class="time-period">
-                            <option value="2" id="6-ending-pm">PM</option>
-                            <option value="1" id="6-ending-am">AM</option>
-                        </select>
-                    </td>
-
-                    <td>
-                        <input type="number" value="00" min="00" max="12" id="6-break-hours" class="time">
-                        <span class="saperator">:</span>
-                        <input type="number" value="00" min="00" max="59" id="6-break-minutes" class="time">
-                    </td>
-                    <td><span id="6-total" class="total">00:00</span></td>
-                </tr>
-
-                <tr class="th">
-                    <td><a style="color: gray; opacity:0.4;"
-                            href="https://shubhamsomwanshi11.github.io/mypage/">shubhasomwanshi11</a></td>
-                    <td colspan="3">
-                        <span class="total-time">Total Hours : </span>
-                    </td>
-                    <td><span class="total-time" id="total-time">0:00</span></td>
-                </tr>
-            </table>
-
-            <div class="buttons">
-                <button class="calculate" onclick="Calculatedata()"> <i class="material-icons">calculate</i>CALCULATE</button>
-                <button class="clear" type="reset"> <i class="material-icons">backspace</i>CLEAR</button>
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Weekly Total</th>
+                                <th><span id="weekly-total">00 : 00 </span></th>
+                            </tr>
+                        </tfoot>
+                    </center>
+                </table>
             </div>
-        </form>
+        </div>
     </div>
+
 </body>
 
 </html>
