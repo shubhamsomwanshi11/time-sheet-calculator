@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Sheet Calculator</title>
+    <script src="./indexb.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+    <style>
+        .table{
+            width: 90vw;
+            height: 90vh;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+
+<body>
+    <div class="is-fullhd">
+        <div class="is-flex is-justify-content-center is-align-content-center">
+            <div>
+                <table class="table card">
+                    <caption class="title is-2 has-text-centered">Timesheet Calculator</caption>
+                    <center>
+                        <thead>
+                            <tr class="has-background-primary-light pt-5 pb-5">
+                                <th>Day</th>
+                                <th>Starting Time</th>
+                                <th>Ending Time</th>
+                                <th>Break Time (minutes)</th>
+                                <th>Total Hours Worked</th>
+                            </tr>
+                        </thead>
+                        <tbody class="has-text-centered">
+                            <tr>
+                                <td>Monday</td>
+                                <td><input type="time" class="input" id="monday-start"></td>
+                                <td><input type="time" class="input" id="monday-end"></td>
+                                <td><input type="number" class="input" id="monday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="monday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Tuesday</td>
+                                <td><input type="time" class="input" id="tuesday-start"></td>
+                                <td><input type="time" class="input" id="tuesday-end"></td>
+                                <td><input type="number" class="input" id="tuesday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="tuesday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Wednesday</td>
+                                <td><input type="time" class="input" id="wednesday-start"></td>
+                                <td><input type="time" class="input" id="wednesday-end"></td>
+                                <td><input type="number" class="input" id="wednesday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="wednesday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Thursday</td>
+                                <td><input type="time" class="input" id="thursday-start"></td>
+                                <td><input type="time" class="input" id="thursday-end"></td>
+                                <td><input type="number" class="input" id="thursday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="thursday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Friday</td>
+                                <td><input type="time" class="input" id="friday-start"></td>
+                                <td><input type="time" class="input" id="friday-end"></td>
+                                <td><input type="number" class="input" id="friday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="friday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Saturday</td>
+                                <td><input type="time" class="input" id="saturday-start"></td>
+                                <td><input type="time" class="input" id="saturday-end"></td>
+                                <td><input type="number" class="input" id="saturday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="saturday-total"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Sunday</td>
+                                <td><input type="time" class="input" id="sunday-start"></td>
+                                <td><input type="time" class="input" id="sunday-end"></td>
+                                <td><input type="number" class="input" id="sunday-break" value="0" min="0" max="240">
+                                </td>
+                                <td><span id="sunday-total"></span></td>
+                            </tr>
+                        </tbody>
+
+                        <tfoot>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Weekly Total</th>
+                                <th><span id="weekly-total">00 : 00 </span></th>
+                            </tr>
+                        </tfoot>
+                    </center>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
