@@ -95,14 +95,13 @@
             font-weight: bold;
             font-size: 18px;
             color: gray;
+            text-align: center;
         }
 
         .total-time {
             float: right;
-            margin-right: 10px;
             font-weight: bold;
             color: gray;
-            font-size: 22px;
             margin-right: 25px;
         }
 
@@ -136,22 +135,23 @@
             margin-left: 20px;
             border-radius: 5%;
         }
+
     </style>
 </head>
 
 <body>
     <div class="cnt">
         <div>
-            <h1 class="title is-1">Time Sheet Calculator</h1>
+            <h1 class="title is-1 is-size-3-mobile">Time Sheet Calculator</h1>
             <form action="" onsubmit="return false">
                 <table class="table">
-                    <thead class="has-background-danger has-text-centered pt-5 pb-5">
-                        <tr>
-                            <th>Day</th>
-                            <th>Starting Time</th>
-                            <th>Ending Time</th>
-                            <th>Break Deduction</th>
-                            <th>Total</th>
+                    <thead class="has-text-centered pt-5 pb-5" style="background-color: #262753; ">
+                        <tr style="height: 60px;">
+                            <th style="color: white; text-align: center;">Day</th>
+                            <th style="color: white;">Starting Time</th>
+                            <th style="color: white;">Ending Time</th>
+                            <th style="color: white;">Break Deduction</th>
+                            <th style="color: white;">Total</th>
                         </tr>
                     </thead>
                     <tr>
@@ -182,9 +182,9 @@
                         </td>
                         <td name="Total :"><span id="0-total" class="total">00:00</span></td>
                     </tr>
-                    <tr class="has-background-danger-light">
+                    <tr class="has-background-grey-lighter">
                         <td name="Day :" id="day">Tuesday</td>
-                        <td name="Starting :" class="1-starting-time">
+                        <td name="Starting :" class="starting-time">
                             <input type="number" value="00" min="00" max="12" id="1-starting-hours" class="time">
                             <span class="saperator">:</span>
                             <input type="number" value="00" min="00" max="59" id="1-starting-minutes" class="time">
@@ -193,7 +193,7 @@
                                 <option value="2" id="1-starting-pm">PM</option>
                             </select>
                         </td>
-                        <td name="Ending : " class="2-ending-time">
+                        <td name="Ending : " class="ending-time">
                             <input type="number" value="00" min="00" max="12" id="1-ending-hours" class="time">
                             <span class="saperator">:</span>
                             <input type="number" value="00" min="00" max="59" id="1-ending-minutes" class="time">
@@ -238,7 +238,7 @@
                         </td>
                         <td name="Total" name="Total"><span id="2-total" class="total">00:00</span></td>
                     </tr>
-                    <tr class="has-background-danger-light">
+                    <tr class="has-background-grey-lighter">
                         <td name="Day :" id="day">Thursday</td>
                         <td name="Starting :" class="starting-time">
                             <input type="number" value="00" min="00" max="12" id="3-starting-hours" class="time">
@@ -268,7 +268,7 @@
                     </tr>
                     <tr>
                         <td name="Day :" id="day">Friday</td>
-                        <td name="Starting :" class="4-starting-time">
+                        <td name="Starting :" class="starting-time">
                             <input type="number" value="00" min="00" max="12" id="4-starting-hours" class="time">
                             <span class="saperator">:</span>
                             <input type="number" value="00" min="00" max="59" id="4-starting-minutes" class="time">
@@ -277,7 +277,7 @@
                                 <option value="2" id="4-starting-pm">PM</option>
                             </select>
                         </td>
-                        <td name="Ending :" class="4-ending-time">
+                        <td name="Ending :" class="ending-time">
                             <input type="number" value="00" min="00" max="12" id="4-ending-hours" class="time">
                             <span class="saperator">:</span>
                             <input type="number" value="00" min="00" max="59" id="4-ending-minutes" class="time">
@@ -294,9 +294,9 @@
                         </td>
                         <td name="Total"><span id="4-total" class="total">00:00</span></td>
                     </tr>
-                    <tr class="has-background-danger-light">
+                    <tr class="has-background-grey-lighter">
                         <td name="Day :" id="day">Saturday</td>
-                        <td name="Starting :" class="5-starting-time">
+                        <td name="Starting :" class="starting-time">
                             <input type="number" value="00" min="00" max="12" id="5-starting-hours" class="time">
                             <span class="saperator">:</span>
                             <input type="number" value="00" min="00" max="59" id="5-starting-minutes" class="time">
@@ -305,7 +305,7 @@
                                 <option value="2" id="5-starting-pm">PM</option>
                             </select>
                         </td>
-                        <td name="Ending :" class="5-ending-time">
+                        <td name="Ending :" class="ending-time">
                             <input type="number" value="00" min="00" max="12" id="5-ending-hours" class="time">
                             <span class="saperator">:</span>
                             <input type="number" value="00" min="00" max="59" id="5-ending-minutes" class="time">
@@ -350,25 +350,31 @@
                         </td>
                         <td name="Total"><span id="6-total" class="total">00:00</span></td>
                     </tr>
+                    <tfoot class="card has-background-grey-lighter">
+                        <tr class="">
+                            <td style="padding: 16px;">
+                                <div style="display: flex; width: 100px;">
+                                    <button  class="button is-success mx-2" onclick="Calculatedata()"> <i
+                                            class="material-icons">calculate</i>Calculate</button>
 
-                    <tr class="has-background-danger-light">
-                        <td>
-                            <button class="button is-success mx-2" onclick="Calculatedata()"> <i
-                                    class="material-icons">calculate</i>Calculate</button>
-                            <button class="button is-warning" type="reset"> <i
-                                    class="material-icons">backspace</i>Clear</button>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <h1 class="has-text-weight-bold has-text-grey has-text-left">Total Hours : </h1>
-                        </td>
-                        <td style="text-align: center; display: block;">
-                            <h1 class="has-text-grey has-text-weight-bold title is-4 has-text-left" name="Total"
-                                id="total-time">0:00
-                            </h1>
-                        </td>
-                    </tr>
+                                            <button class="button is-warning" type="reset"> <i
+                                                class="material-icons">backspace</i>  Clear</button>
+                                </div>
+                                    </td>
+                                    <td>
+
+                                        </td>
+                            <td></td>
+                            <td>
+                                <h1 class="has-text-weight-bold has-text-grey has-text-left">Total Hours : </h1>
+                            </td>
+                            <td style="text-align: center; display: block;">
+                                <h1 class="has-text-grey has-text-weight-bold title is-4 has-text-left" name="Total"
+                                    id="total-time">0:00
+                                </h1>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </form>
         </div>
