@@ -21,10 +21,11 @@ function Calculatedata() {
                     hours = hours - 1
                     minutes = minutes + 60
                 }
-                total.innerHTML = `${hours} : ${minutes}`
+                total.innerHTML = `${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')}`;
                 finalhours = finalhours + hours, finalminutes = finalminutes + minutes
-                finaltotal = `${finalhours}:${finalminutes}`
-                total_time.innerHTML = finaltotal
+                finaltotal = `${finalhours.toString().padStart(2, '0')}:${finalminutes.toString().padStart(2, '0')}`;
+                total_time.innerHTML = finaltotal.toString().padStart(2, '0');
+
             }
 
             else if (start_time_period == 1 && end_time_period == 1 || start_time_period == 2 && end_time_period == 2) {
@@ -34,9 +35,10 @@ function Calculatedata() {
                     minutes = minutes + 60
                 }
                 finalhours = finalhours + hours, finalminutes = finalminutes + minutes
-                finaltotal = `${finalhours}:${finalminutes}`
-                total_time.innerHTML = finaltotal
-                total.innerHTML = `${hours} : ${minutes}`
+                finaltotal = `${finalhours.toString().padStart(2, '0')}:${finalminutes.toString().padStart(2, '0')}`;
+                total_time.innerHTML = finaltotal.toString().padStart(2, '0');
+                total.innerHTML = `${hours.toString().padStart(2, '0')} : ${minutes.toString().padStart(2, '0')}`;
+
             }
         }
     }
