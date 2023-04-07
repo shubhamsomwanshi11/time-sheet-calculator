@@ -7,12 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="index.js"></script>
     <style>
         td,
         th {
             width: 20%;
             text-align: center;
+        }
+
+        i {
+            clip-path: circle(50%);
+            font-size: 1rem !important;
+            display: flex !important;
+            align-items: center;
+            width: 1% !important;
+            justify-content: center;
         }
 
         @media screen and (max-width: 768px) {
@@ -28,309 +38,88 @@
                 white-space: nowrap;
             }
 
+            i {
+                background-color: black;
+                border-radius: 50%;
+                display: flex;
+            }
         }
     </style>
+    <symbol id="calculate" viewBox="0 96 960 960">
+        <path fill="currentColor"
+            d="M453 776h60V610h167v-60H513V376h-60v174H280v60h173v166Zm27.266 200q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z" />
+    </symbol>
 </head>
-<section class="section">
+<section class="container">
     <h1 class="title is-2 is-size-5-mobile has-text-weight-bold is-striped is-hoverable">Time Sheet Calculator</h1>
     <form action="" onsubmit="return false">
         <table class="table card is-striped is-hoverable is-fullwidth">
             <thead style="background-color: #262753;" class="is-hidden-mobile">
                 <tr class="is-flex is-fullwidth pt-2" style="height: 60px;">
-                    <th class="has-text-centered has-text-white" style="width: 20%;">Day</th>
-                    <th class="has-text-centered has-text-white" style="width: 20%;">Starting Time</th>
-                    <th class="has-text-centered has-text-white" style="width: 20%;">Ending Time</th>
-                    <th class="has-text-centered has-text-white" style="width: 20%;">Break Time</th>
-                    <th class="has-text-centered has-text-white" style="width: 20%;">Total</th>
+                    <th class="has-text-centered has-text-white" style="">Day</th>
+                    <th class="has-text-centered has-text-white" style="width: 27% !important;">Starting Time</th>
+                    <th class="has-text-centered has-text-white" style="width: 27% !important;">Ending Time</th>
+                    <th class="has-text-centered has-text-white" style="width: 14% !important;">Break Time</th>
+                    <th class="has-text-centered has-text-white" style="width: 15% !important;">Total</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="is-flex-desktop">
-                    <td id="day" name="Day :" class="has-text-weight-bold is-flex is-justify-content-center">Monday</td>
-                    <td name="Starting :" class="is-flex is-flex-wrap-nowrap">
-                        <input type="number" value="00" min="00" max="12" id="0-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="0-starting-minutes" class="input">
-                        <div class="select mx-2">
-                            <select name="" id="0-starting-time-period">
-                                <option value="1" id="1-starting-am">AM</option>
-                                <option value="2" id="1-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="0-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="0-ending-minutes" class="input">
-                        <div class="select mx-2">
-                            <select name="" id="0-ending-time-period" class="select">
-                                <option value="2" id="0-ending-pm">PM</option>
-                                <option value="1" id="0-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Break :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="0-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="0-break-minutes" class="input">
-                    </td>
-                    <td name="Total :" class="is-flex is-justify-content-center">
-                        <p id="0-total" class="has-text-grey has-text-weight-bold">00:00</p>
-                    </td>
-                </tr>
-                <tr class="has-background-grey-lighter is-flex-desktop">
-                    <td name="Day :" id="day" class="has-text-weight-bold is-flex is-justify-content-center">Tuesday
-                    </td>
-                    <td name="Starting :" class="is-flex is-flex-wrap-nowrap">
-                        <input type="number" value="00" min="00" max="12" id="1-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="1-starting-minutes" class="input">
-                        <div class="select mx-2">
-                            <select name="" id="1-starting-time-period">
-                                <option value="1" id="1-starting-am">AM</option>
-                                <option value="2" id="1-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending : " class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="1-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="1-ending-minutes" class="input">
-                        <div class="select mx-2">
-                            <select name="" id="1-ending-time-period">
-                                <option value="2" id="1-ending-pm">PM</option>
-                                <option value="1" id="1-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-
-                    <td name="Break :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="1-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="1-break-minutes" class="input">
-                    </td>
-                    <td name="Total" class="is-flex is-justify-content-center "><span id="1-total"
-                            class="has-text-grey has-text-weight-bold">00:00</span>
-                    </td>
-                </tr>
-                <tr class="is-flex-desktop">
-                    <td name="Day :" id="day" class="has-text-weight-bold is-flex is-justify-content-center">Wednesday
-                    </td>
-                    <td name="Starting :" name="Starting :" class="is-flex is-flex-wrap-nowrap">
-                        <input type="number" value="00" min="00" max="12" id="2-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="2-starting-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="2-starting-time-period">
-                                <option value="1" id="2-starting-am">AM</option>
-                                <option value="2" id="2-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending :" name="Ending : " class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="2-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="2-ending-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="2-ending-time-period">
-                                <option value="2" id="2-ending-pm">PM</option>
-                                <option value="1" id="2-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-
-                    <td name="Break :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="2-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="2-break-minutes" class="input">
-                    </td>
-                    <td class="is-flex is-justify-content-center" name="Total"><span id="2-total"
-                            class="has-text-grey has-text-weight-bold">00:00</span></td>
-                </tr>
-                <tr class="has-background-grey-lighter is-flex-desktop">
-                    <td name="Day :" id="day" class="has-text-weight-bold is-flex is-justify-content-center">Thursday
-                    </td>
-                    <td name="Starting :" class="is-flex is-flex-wrap-nowrap">
-                        <input type="number" value="00" min="00" max="12" id="3-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="3-starting-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="3-starting-time-period">
-
-                                <option value="1" id="3-starting-am">AM</option>
-                                <option value="2" id="3-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="3-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="3-ending-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="3-ending-time-period">
-                                <option value="2" id="3-ending-pm">PM</option>
-                                <option value="1" id="3-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-
-                    <td name="Break :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="3-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="3-break-minutes" class="input">
-                    </td>
-                    <td name="Total" class="is-flex is-justify-content-center"><span id="3-total"
-                            class="has-text-grey has-text-weight-bold">00:00</span>
-                    </td>
-                </tr>
-                <tr class="is-flex-desktop">
-                    <td name="Day :" class="has-text-weight-bold is-flex is-justify-content-center" id="day">Friday</td>
-                    <td name="Starting :" class="is-flex is-flex-wrap-nowrap">
-                        <input type="number" value="00" min="00" max="12" id="4-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="4-starting-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="4-starting-time-period">
-                                <option value="1" id="4-starting-am">AM</option>
-                                <option value="2" id="4-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="4-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="4-ending-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="4-ending-time-period">
-                                <option value="2" id="4-ending-pm">PM</option>
-                                <option value="1" id="4-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-
-                    <td name="Break :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="4-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="4-break-minutes" class="input">
-                    </td>
-                    <td name="Total" class="is-flex is-justify-content-center"><span id="4-total"
-                            class="has-text-grey has-text-weight-bold">00:00</span>
-                    </td>
-                </tr>
-                <tr class="has-background-grey-lighter is-flex-desktop">
-                    <td name="Day :" id="day" class="has-text-weight-bold is-flex is-justify-content-center">Saturday
-                    </td>
-                    <td name="Starting :" class="is-flex is-flex-wrap-nowrap">
-                        <input type="number" value="00" min="00" max="12" id="5-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="5-starting-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="5-starting-time-period">
-                                <option value="1" id="5-starting-am">AM</option>
-                                <option value="2" id="5-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="5-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="5-ending-minutes" class="input">
-                        <div class="select mx-2">
-                            <select name="" id="5-ending-time-period">
-                                <option value="2" id="5-ending-pm">PM</option>
-                                <option value="1" id="5-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Break :" class="is-flex">
-                        <input type="number" value="00" min="00" max="12" id="5-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="5-break-minutes" class="input">
-                    </td>
-                    <td name="Total" class="is-flex is-justify-content-center"><span id="5-total"
-                            class="has-text-grey has-text-weight-bold">00:00</span>
-                    </td>
-                </tr>
-                <tr class="is-flex-desktop">
-                    <td name="Day :" class="has-text-weight-bold is-flex is-justify-content-center" id="day">Sunday</td>
-                    <td name="Starting :" class="is-flex ">
-                        <input type="number" value="00" min="00" max="12" id="6-starting-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="6-starting-minutes" class="input">
-                        <div class="select mx-2">
-                            <select name="" id="6-starting-time-period">
-                                <option value="1" id="6-starting-am">AM</option>
-                                <option value="2" id="6-starting-pm">PM</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td name="Ending :" class="is-flex ">
-                        <input type="number" value="00" min="00" max="12" id="6-ending-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="6-ending-minutes" class="input">
-                        <div class="select mx-2">
-
-                            <select name="" id="6-ending-time-period">
-                                <option value="2" id="6-ending-pm">PM</option>
-                                <option value="1" id="6-ending-am">AM</option>
-                            </select>
-                        </div>
-                    </td>
-
-                    <td name="Break :" class="is-flex ">
-                        <input type="number" value="00" min="00" max="12" id="6-break-hours" class="input">
-                        <span class="mt-2 mx-1 has-text-weight-bold">:</span>
-                        <input type="number" value="00" min="00" max="59" id="6-break-minutes" class="input">
-                    </td>
-                    <td name="Total" class="is-flex is-justify-content-center"><span id="6-total"
-                            class="has-text-grey has-text-weight-bold">00:00</span>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody id="table-body"> </tbody>
             <tfoot class="is-flex">
-                <tr class="pb-4 is-flex-desktop  is-justify-content-end" style="width:100%;">
-                    <th colspan="4">
-                        <h1 class="has-text-weight-bold has-text-grey has-text-right title is-5">Total Hours : </h1>
+                <tr class=" is-flex-desktop is-justify-content-end" style="width:100%;">
+                    <th class="is-flex"><button class="button is-link is-normal is-rounded"
+                            onclick="Sample('sample')">Sample</button><button
+                            class="button mx-2 is-normal is-rounded is-danger" type="reset">
+                            <p class="has-text-weight-bold">
+                                <span class="icon is-small pr-3">
+                                    <i class="fas fa-times"></i>
+                                </span>
+                                Clear
+                            </p>
+                        </button></th>
+                    <th class="is-flex">
+                        <div>
+                            <button class="button is-primary is-rounded mx-1" onclick="Sample('08:03')">08 to
+                                03</button>
+                            <button class="button is-primary is-rounded mx-1 mt-1" onclick="Sample('09:05')">09 to
+                                05</button>
+                        </div>
+                        <div>
+                            <button class="button is-primary is-rounded mx-1" onclick="Sample('10:04')">10 to
+                                04</button>
+                            <button class="button is-primary is-rounded mx-1 mt-1" onclick="Sample('12:08')">12 to
+                                08</button>
+                        </div>
+                    </th>
+
+                    <th>
+                        <p class="has-text-centered mb-2">Enter Common Time</p>
+                        <div class="is-flex">
+                            <div class="mx-3">
+                                <p class="has-text-centered">Start Hour</p>
+                                <input type="number" class="input mx-2" min="00" max="12" id="common-start">
+                            </div>
+                            <div>
+                                <p class="has-text-centered">End Hour</p>
+                                <input type="number" class="input mx-2" min="00" max="12" id="common-end">
+                            </div>
+                        </div>
                     </th>
                     <th>
-                        <h1 class="has-text-grey has-text-centered has-text-weight-bold title is-4" name="Total"
-                            id="total-time">
+                        <h1 class="has-text-weight-bold has-text-grey has-text-right title is-5">Total Hours : </h1>
+                    </th>
+                    <th class="is-flex is-justify-content-center" style="width: 15%;">
+
+                        <h1 class="has-text-grey   has-text-weight-bold title is-4" name="Total" id="total-time">
                             00:00
                         </h1>
                     </th>
                 </tr>
             </tfoot>
         </table>
-        <div class="is-flex">
-            <button class="button is-large is-light mx-2" onclick="Calculatedata()">
-                <p>
-                    <span class="icon is-small pr-3">
-                        <i class="fas fa-calculator"></i>
-                    </span>
-                    Calculate
-                </p>
-            </button>
-            <button class="button is-large is-light" type="reset">
-                <p>
-                    <span class="icon is-small pr-3">
-                        <i class="fas fa-times"></i>
-                    </span>
-                    Clear
-                </p>
-            </button>
-        </div>
     </form>
 </section>
 
 <body>
-
 </body>
 
 </html>
