@@ -70,10 +70,12 @@ function Sample(res) {
         var start = document.getElementById("common-start");
         start.addEventListener("input", () => {
             start_hours.value = start.value;
+            Calculatedata();
         })
         var end = document.getElementById("common-end")
         end.addEventListener("input", () => {
             end_hours.value = end.value;
+            Calculatedata();
         });
 
         Calculatedata()
